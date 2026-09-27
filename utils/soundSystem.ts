@@ -34,7 +34,9 @@ export function toggleAudio(): boolean {
   return !isMuted;
 }
 
-export function playComicSound(type: "thwip" | "blip" | "woosh" | "thunder" | "chime") {
+export function playComicSound(
+  type: "thwip" | "blip" | "woosh" | "thunder" | "chime" | "clang"
+) {
   if (isMuted || typeof window === "undefined") return;
 
   // Rate limit sounds to prevent acoustic clutter
@@ -160,6 +162,25 @@ export function playComicSound(type: "thwip" | "blip" | "woosh" | "thunder" | "c
 
         osc.start(t + idx * 0.04);
         osc.stop(t + 0.65);
+      });
+    } else if (type === "clang") {
+      // Metallic resonant vibranium shield ring
+      const frequencies = [820, 1240, 1960];
+      frequencies.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = idx === 0 ? "triangle" : "sine";
+        osc.frequency.setValueAtTime(freq, t);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.85, t + 0.35);
+
+        gain.gain.setValueAtTime(0.22 / (idx + 1), t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.4);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(t);
+        osc.stop(t + 0.42);
       });
     }
   } catch {
