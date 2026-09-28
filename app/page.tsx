@@ -245,78 +245,6 @@ export default function Home() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // 1. LIGHTWEIGHT CANVAS PARTICLES & EMBERS SYSTEM
-    const canvas = document.getElementById("ambient-particles-canvas") as HTMLCanvasElement | null;
-    let animId: number;
-
-    if (canvas) {
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        let width = (canvas.width = window.innerWidth);
-        let height = (canvas.height = window.innerHeight);
-
-        const onResize = () => {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
-        };
-        window.addEventListener("resize", onResize);
-
-        const particles: Array<{
-          x: number;
-          y: number;
-          size: number;
-          speedY: number;
-          speedX: number;
-          opacity: number;
-          hue: number;
-        }> = [];
-        const count = Math.min(45, Math.floor(width / 35));
-
-        for (let i = 0; i < count; i++) {
-          particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            size: Math.random() * 2.5 + 0.8,
-            speedY: -(Math.random() * 0.7 + 0.2),
-            speedX: (Math.random() - 0.5) * 0.5,
-            opacity: Math.random() * 0.6 + 0.2,
-            hue: Math.random() > 0.4 ? 10 : 205,
-          });
-        }
-
-        const renderParticles = () => {
-          ctx.clearRect(0, 0, width, height);
-
-          for (let i = 0; i < particles.length; i++) {
-            const p = particles[i];
-            p.y += p.speedY;
-            p.x += p.speedX;
-
-            if (p.y < -10) {
-              p.y = height + 10;
-              p.x = Math.random() * width;
-            }
-            if (p.x < -10) p.x = width + 10;
-            if (p.x > width + 10) p.x = -10;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle =
-              p.hue === 10
-                ? `rgba(255, 77, 77, ${p.opacity})`
-                : `rgba(56, 189, 248, ${p.opacity})`;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = p.hue === 10 ? "#ff2a2a" : "#38bdf8";
-            ctx.fill();
-          }
-
-          animId = requestAnimationFrame(renderParticles);
-        };
-
-        renderParticles();
-      }
-    }
-
     // 2. MOUSE TRACKING & PARALLAX ENGINE
     let mouseX = 0;
     let mouseY = 0;
@@ -483,7 +411,6 @@ export default function Home() {
     physicsAnimId = requestAnimationFrame(updatePhysics);
 
     return () => {
-      cancelAnimationFrame(animId);
       cancelAnimationFrame(physicsAnimId);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("scroll", onScroll);
@@ -496,8 +423,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Global Canvas for Warm Embers, Fog, and Spiders/Electric Particle System */}
-      <canvas id="ambient-particles-canvas" className="pointer-events-none" />
+
 
       {/* Full screen lightning flash node */}
       <div id="lightning-flash" style={{ opacity: 0 }} />
