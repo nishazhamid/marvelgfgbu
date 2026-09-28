@@ -1,207 +1,418 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,800;0,900;1,900&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,800;0,900;1,900&family=Outfit:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap');
 @import "tailwindcss";
 
-:root {
-  --color-noir: #0a0a0c;
-  --color-noir-deep: #050507;
-  --color-crimson: #e23636;
-  --color-crimson-bright: #ff2a2a;
-  --color-crimson-dark: #b31414;
-  --color-comic-yellow: #f5c518;
-  --font-bebas: 'Bebas Neue', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-outfit: 'Outfit', sans-serif;
-  --font-bangers: 'Bangers', cursive, sans-serif;
-  --font-inter: 'Inter', sans-serif;
+@layer base {
+  :root {
+    --color-noir: #0a0c12;
+    --color-noir-deep: #05070a;
+    --color-dark-charcoal: #141721;
+    --color-comic-yellow: #f5c518;
+    --color-asgardian-blue: #38bdf8;
+    --color-crimson-400: #ff4d4d;
+    --color-crimson-500: #ff2a2a;
+    --color-crimson-600: #e23636;
+    --color-crimson-700: #b31414;
+    --color-crimson-900: #680b0b;
+    --font-bebas: 'Bebas Neue', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-outfit: 'Outfit', sans-serif;
+    --font-bangers: 'Bangers', cursive, sans-serif;
+    --font-techmono: 'Share Tech Mono', monospace;
+  }
 }
 
-body {
-  background-color: var(--color-noir-deep);
-  color: #f4f4f5;
-  font-family: var(--font-inter);
-  overflow-x: hidden;
-}
+/* Custom Typography Utilities */
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; }
+.font-outfit { font-family: 'Outfit', sans-serif; }
+.font-bangers { font-family: 'Bangers', cursive, sans-serif; }
+.font-techmono { font-family: 'Share Tech Mono', monospace; }
 
-/* Comic Textures */
+/* Custom Color Utilities */
+.bg-noir { background-color: #0a0c12; }
+.bg-noirDeep { background-color: #05070a; }
+.bg-darkCharcoal { background-color: #141721; }
+
+.text-comicYellow { color: #f5c518; }
+.bg-comicYellow { background-color: #f5c518; }
+.border-comicYellow { border-color: #f5c518; }
+
+.text-asgardianBlue { color: #38bdf8; }
+.bg-asgardianBlue { background-color: #38bdf8; }
+.border-asgardianBlue { border-color: #38bdf8; }
+
+.text-crimson-400 { color: #ff4d4d; }
+.text-crimson-500 { color: #ff2a2a; }
+.text-crimson-600 { color: #e23636; }
+.text-crimson-700 { color: #b31414; }
+.bg-crimson-500 { background-color: #ff2a2a; }
+.bg-crimson-600 { background-color: #e23636; }
+.bg-crimson-700 { background-color: #b31414; }
+.bg-crimson-900 { background-color: #680b0b; }
+.bg-crimson-950 { background-color: #3b0707; }
+.border-crimson-500 { border-color: #ff2a2a; }
+.border-crimson-600 { border-color: #e23636; }
+.border-crimson-700 { border-color: #b31414; }
+
+/* Custom Comic Shadows */
+.shadow-comic-red { box-shadow: 6px 6px 0px 0px #b31414; }
+.shadow-comic-black { box-shadow: 8px 8px 0px 0px #000000; }
+.shadow-comic-glow { box-shadow: 0 0 35px -5px rgba(226, 54, 54, 0.45); }
+.shadow-comic-glow-lg { box-shadow: 0 0 60px rgba(255, 42, 42, 0.55); }
+.shadow-comic-blue { box-shadow: 0 0 40px rgba(56, 189, 248, 0.5); }
+
+/* Comic Halftone Dot Pattern - Refined transparent overlay */
 .comic-halftone {
-  background-image: radial-gradient(rgba(226, 54, 54, 0.22) 1.5px, transparent 1.5px),
-                    radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
+  background-image: radial-gradient(rgba(226, 54, 54, 0.18) 1.2px, transparent 1.2px), radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
 }
 
 .comic-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
-.comic-panel-border {
-  border: 2px solid #27272a;
-  box-shadow: 6px 6px 0px 0px rgba(179, 20, 20, 0.65);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* Edge-only cinematic vignettes preserving center visual clarity */
+.cinematic-vignette {
+  background: radial-gradient(circle at 50% 50%, rgba(10, 12, 18, 0.15) 35%, rgba(6, 8, 12, 0.82) 85%, #05070a 100%);
 }
 
-.comic-panel-border:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 10px 10px 0px 0px #e23636;
-  border-color: #ff4d4d;
+/* High-tech Marvel comic cards with beveled corner cuts */
+.comic-panel-bevel {
+  position: relative;
+  border: 1.5px solid rgba(226, 54, 54, 0.35);
+  clip-path: polygon(
+    0 14px, 14px 0,
+    calc(100% - 14px) 0, 100% 14px,
+    100% calc(100% - 14px), calc(100% - 14px) 100%,
+    14px 100%, 0 calc(100% - 14px)
+  );
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.8), 0 0 25px rgba(226, 54, 54, 0.15);
 }
 
-/* Title Shimmer Hover Effect */
-.title-shimmer {
+.comic-panel-bevel:hover {
+  border-color: rgba(255, 77, 77, 0.85);
+  box-shadow: 10px 10px 0px 0px #b31414, 0 0 35px rgba(255, 42, 42, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Metallic Chrome Beveled Title Typography with Light Sweep */
+.chrome-metallic-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #d1d5db 30%,
+    #9ca3af 50%,
+    #f3f4f6 52%,
+    #ffffff 75%,
+    #6b7280 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95)) drop-shadow(4px 4px 0px #000);
+  position: relative;
+}
+
+.chrome-sweep {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  transition: filter 0.3s ease, text-shadow 0.3s ease;
 }
 
-.title-shimmer::after {
+.chrome-sweep::after {
   content: '';
   position: absolute;
-  top: -50%;
+  top: -100%;
   left: -150%;
-  width: 60%;
-  height: 200%;
+  width: 50%;
+  height: 300%;
   background: linear-gradient(
     60deg, 
     transparent 20%, 
-    rgba(255, 255, 255, 0.65) 50%, 
+    rgba(255, 255, 255, 0.85) 50%, 
+    rgba(56, 189, 248, 0.4) 60%,
     transparent 80%
   );
   transform: rotate(25deg);
-  transition: all 0.75s ease;
-  opacity: 0;
+  animation: chromeGlint 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
 }
 
-.title-shimmer:hover::after {
-  left: 180%;
-  opacity: 1;
+@keyframes chromeGlint {
+  0%, 65% { left: -150%; opacity: 0; }
+  70% { opacity: 1; }
+  100% { left: 220%; opacity: 0; }
 }
 
-.title-shimmer:hover {
-  filter: brightness(1.2);
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-}
-
-/* Pulsing Collab Cross */
+/* Glowing animated Cross */
 .pulse-cross {
-  animation: pulseCross 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
-  transition: text-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.pulse-cross:hover {
-  transform: scale(1.15);
-  text-shadow: 0 0 35px #ff2a2a, 0 0 60px #ff4d4d;
+  animation: pulseCross 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 @keyframes pulseCross {
   0%, 100% {
     transform: scale(1);
-    text-shadow: 0 0 12px #e23636, 0 0 30px #b31414;
+    text-shadow: 0 0 16px #e23636, 0 0 32px #b31414;
   }
   50% {
-    transform: scale(1.12);
-    text-shadow: 0 0 24px #ff2a2a, 0 0 45px #ff4d4d;
+    transform: scale(1.15);
+    text-shadow: 0 0 30px #ff2a2a, 0 0 60px #ff4d4d, 0 0 80px rgba(255,77,77,0.7);
   }
 }
 
-/* Comic Popup Bursts */
+/* Laser Red Glowing Buttons */
+.btn-laser-glow {
+  position: relative;
+  box-shadow: 0 0 20px rgba(226, 54, 54, 0.55), inset 0 0 10px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 120, 120, 0.8);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-laser-glow:hover {
+  box-shadow: 0 0 35px rgba(255, 42, 42, 0.85), inset 0 0 14px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-laser-glow:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Web Strand Rigging */
+.dynamic-spidey-rig {
+  transform-origin: top center;
+  will-change: transform;
+  transition: transform 0.08s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+.dynamic-web-line {
+  transform-origin: top center;
+  will-change: transform;
+  transition: transform 0.08s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+.web-strand-svg {
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.95)) drop-shadow(0 0 10px rgba(56,189,248,0.5));
+}
+
+/* Mjolnir Levitating & Plasma Arcs */
+.mjolnir-levitate {
+  animation: mjolnirFloat 4.2s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+@keyframes mjolnirFloat {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50% { transform: translateY(-16px) rotate(4deg); }
+}
+
+.plasma-arc {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+  animation: plasmaFlicker 0.8s infinite alternate;
+}
+
+@keyframes plasmaFlicker {
+  0% { opacity: 0.3; transform: scale(0.96) rotate(0deg); }
+  100% { opacity: 0.9; transform: scale(1.04) rotate(4deg); }
+}
+
+/* Shield Glint & Hover */
+.shield-spin-slow {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shield-glint-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  animation: shieldGlint 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes shieldGlint {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.1; }
+  50% { opacity: 0.7; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.1; }
+}
+
+.shield-spin-rapid {
+  animation: shieldRicochet 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes shieldRicochet {
+  0% { transform: scale(1) rotate(0deg); }
+  35% { transform: scale(1.24) rotate(360deg); }
+  70% { transform: scale(0.92) rotate(720deg); }
+  100% { transform: scale(1) rotate(1080deg); }
+}
+
+/* Kinetic Shockwave rings on click */
+.shockwave-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: ringExpand 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ringExpand {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.3);
+    border: 4px solid rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(3.2);
+    border: 1px solid rgba(56, 189, 248, 0);
+  }
+}
+
+/* Comic floating popup bubble */
 .comic-burst-popup {
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  font-family: var(--font-bangers);
+  font-family: 'Bangers', cursive, sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
-  animation: burstFloat 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: burstFloat 1.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transform: translate(-50%, -50%);
 }
 
 @keyframes burstFloat {
   0% {
     opacity: 0;
-    transform: translate(-50%, -20%) scale(0.4) rotate(-15deg);
+    transform: translate(-50%, -20%) scale(0.35) rotate(-15deg);
   }
-  25% {
+  22% {
     opacity: 1;
-    transform: translate(-50%, -60%) scale(1.25) rotate(6deg);
+    transform: translate(-50%, -60%) scale(1.35) rotate(8deg);
   }
   70% {
     opacity: 0.95;
-    transform: translate(-50%, -100%) scale(1.05) rotate(-3deg);
+    transform: translate(-50%, -100%) scale(1.08) rotate(-4deg);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -150%) scale(0.8) rotate(10deg);
+    transform: translate(-50%, -150%) scale(0.8) rotate(12deg);
   }
 }
 
-/* ========================================================
-   SUPERHERO ARTIFACT ANIMATIONS: Mjolnir & Shield
-   ======================================================== */
-
-/* Interactive Thor Mjolnir float */
-.mjolnir-levitate {
-  animation: mjolnirFloat 4s ease-in-out infinite;
-  will-change: transform, filter;
-}
-
-@keyframes mjolnirFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(-6deg);
-  }
-  50% {
-    transform: translateY(-16px) rotate(4deg);
-  }
-}
-
-/* Captain America Shield Spin & Ricochet */
-.shield-spin-slow {
-  animation: shieldHover 5s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes shieldHover {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-  }
-  50% {
-    transform: translateY(-12px) rotate(18deg) scale(1.03);
-  }
-}
-
-.shield-spin-rapid {
-  animation: shieldRicochet 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform;
-}
-
-@keyframes shieldRicochet {
-  0% {
-    transform: scale(1) rotate(0deg);
-  }
-  40% {
-    transform: scale(1.18) rotate(360deg);
-  }
-  70% {
-    transform: scale(0.94) rotate(720deg);
-  }
-  100% {
-    transform: scale(1) rotate(1080deg);
-  }
-}
-
-/* Subtle Thunder Flash Overlay */
-.lightning-flash-overlay {
+/* Screen Flash */
+#lightning-flash {
   position: fixed;
   inset: 0;
-  background: rgba(224, 242, 254, 0.35);
+  background: rgba(224, 242, 254, 0.55);
   z-index: 9998;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.08s ease-out;
+  transition: opacity 0.06s ease-out;
+}
+
+/* Global dynamic background canvas for atmospheric embers & particles */
+#ambient-particles-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Chromatic Glitch effect on hover */
+.comic-glitch:hover {
+  text-shadow: 3px -2px 0px #00ffff, -3px 2px 0px #ff0055;
+}
+
+/* Spider-Verse Hero Title Glitch & Badges */
+@keyframes svGlitchCyan {
+  0%, 78%, 92%, 100% { opacity: 0; transform: translate(0, 0); clip-path: none; }
+  80% { opacity: 0.85; transform: translate(-4px, -1px); clip-path: polygon(0 15%, 100% 15%, 100% 38%, 0 38%); }
+  83% { opacity: 0.9; transform: translate(-6px, 2px); clip-path: polygon(0 52%, 100% 52%, 100% 68%, 0 68%); }
+  86% { opacity: 0.85; transform: translate(-3px, -2px); clip-path: polygon(0 80%, 100% 80%, 100% 95%, 0 95%); }
+  89% { opacity: 0.6; transform: translate(-2px, 1px); clip-path: polygon(0 5%, 100% 5%, 100% 25%, 0 25%); }
+}
+
+@keyframes svGlitchMagenta {
+  0%, 78%, 92%, 100% { opacity: 0; transform: translate(0, 0); clip-path: none; }
+  80% { opacity: 0.85; transform: translate(4px, 1px); clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
+  83% { opacity: 0.9; transform: translate(6px, -2px); clip-path: polygon(0 65%, 100% 65%, 100% 82%, 0 82%); }
+  86% { opacity: 0.85; transform: translate(3px, 2px); clip-path: polygon(0 8%, 100% 8%, 100% 22%, 0 22%); }
+  89% { opacity: 0.6; transform: translate(2px, -1px); clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); }
+}
+
+.sv-chroma-cyan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  filter: drop-shadow(-4px 0 0 #00f0ff);
+  mix-blend-mode: screen;
+  animation: svGlitchCyan 3.5s infinite;
+}
+
+.sv-chroma-magenta {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  filter: drop-shadow(4px 0 0 #ff0055);
+  mix-blend-mode: screen;
+  animation: svGlitchMagenta 3.5s infinite;
+}
+
+.sv-base-layer {
+  position: relative;
+  z-index: 10;
+}
+
+.marvel-logo-badge {
+  background: #e23636;
+  padding: 4px 16px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.marvel-logo-badge:hover {
+  transform: scale(1.04) rotate(-1deg);
+}
+
+.gfg-logo-badge {
+  background: #0a0c12;
+  padding: 4px 16px;
+  border: 2px solid #27272a;
+  box-shadow: 4px 4px 0px #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.gfg-logo-badge:hover {
+  transform: scale(1.04) rotate(1deg);
+  border-color: #f5c518;
+}
+
+.electric-cross {
+  color: #ff2a2a;
+  line-height: 1;
+  text-shadow: 0 0 16px #e23636, 0 0 35px #b31414;
 }
 
 /* Custom Scrollbar */
@@ -209,7 +420,7 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050507;
+  background: #05070a;
 }
 ::-webkit-scrollbar-thumb {
   background: #b31414;
