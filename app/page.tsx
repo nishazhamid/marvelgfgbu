@@ -725,7 +725,7 @@ export default function Home() {
                 className="sv-chroma-cyan flex items-center justify-center flex-nowrap w-full opacity-0"
               >
                 <div className="marvel-logo-badge rounded-md">
-                  <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none text-white font-black">
+                  <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none text-white font-montserrat font-black">
                     MARVEL
                   </span>
                 </div>
@@ -748,7 +748,7 @@ export default function Home() {
                 className="sv-chroma-magenta flex items-center justify-center flex-nowrap w-full opacity-0"
               >
                 <div className="marvel-logo-badge rounded-md">
-                  <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none text-white font-black">
+                  <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none text-white font-montserrat font-black">
                     MARVEL
                   </span>
                 </div>
@@ -776,7 +776,7 @@ export default function Home() {
                   }}
                   title="Click to unleash Multiversal Thunder!"
                 >
-                  <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none text-white font-black">
+                  <span className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none text-white font-montserrat font-black">
                     MARVEL
                   </span>
                 </div>
